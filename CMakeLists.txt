@@ -6,34 +6,24 @@ include(GNUInstallDirs)
 ################################################################################
 # rapidxml targets section
 
-set(TARGET rapidxml)
-
-add_library(${TARGET} INTERFACE)
+add_library(rapidxml INTERFACE)
 target_include_directories(rapidxml
 INTERFACE
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/rapidxml/>
     $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
 
-install(TARGETS ${TARGET}
-        EXPORT ${TARGET}-config
+install(TARGETS rapidxml
+        EXPORT ${PROJECT_NAME}-config
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
-install(DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/${TARGET}/
-        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${TARGET})
+install(DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/${PROJECT_NAME}/
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME})
 
 ################################################################################
 # rapidxml component section
 
-install(EXPORT ${TARGET}-config
+install(EXPORT ${PROJECT_NAME}-config
         NAMESPACE ${PROJECT_NAME}::
-        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME})
-
-################################################################################
-# project section
-
-configure_file(cmake/${PROJECT_NAME}-config.cmake.in ${PROJECT_NAME}-config.cmake @ONLY)
-
-install(FILES "${CMAKE_BINARY_DIR}/${PROJECT_NAME}-config.cmake"
         DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME})
 
 ################################################################################
