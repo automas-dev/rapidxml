@@ -9,7 +9,7 @@ A CMake port of http://rapidxml.sourceforge.net/
 ### Find Package
 
 ```sh
-git clone https://gitlab.com/twh2898/rapidxml
+git clone https://gitlab.com/automas-dev/rapidxml
 cd rapidxml
 cmake -S . -B build
 cmake --build build --target install
@@ -33,7 +33,7 @@ main.cpp
 ### Submodule
 
 ```sh
-git submodule add https://gitlab.com/twh2898/rapidxml.git
+git submodule add https://gitlab.com/automas-dev/rapidxml.git
 ```
 
 CMakeLists.txt
